@@ -1,2 +1,2 @@
 # advent-of-code
-puzzels from https://adventofcode.com/
+Puzzels from https://adventofcode.com/
