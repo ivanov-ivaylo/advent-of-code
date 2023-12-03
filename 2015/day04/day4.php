@@ -1,6 +1,6 @@
 <?php
 
-$input = "ckczppom";
+$input = file_get_contents("input.txt");
 
 
 for ($i = 0; $i < 10000000; $i++) {
