@@ -30,7 +30,7 @@ type StarNumbers struct {
 	Numbers []int
 }
 
-func readInput(inputData []byte) ([][]string, []string) {
+func parseInput(inputData []byte) ([][]string, []string) {
 	inputDataRows := strings.Split(string(inputData), "\n")
 
 	var result [][]string
@@ -153,7 +153,7 @@ func findNumbersInRow(str string) []ScanNumber {
 
 func Part1(inputData []byte) int {
 
-	inputMatrix, inputDataRows := readInput(inputData)
+	inputMatrix, inputDataRows := parseInput(inputData)
 	result := 0
 
 	for i := 0; i < len(inputDataRows); i++ {
@@ -172,7 +172,7 @@ func Part1(inputData []byte) int {
 }
 
 func Part2(inputData []byte) int {
-	inputMatrix, inputDataRows := readInput(inputData)
+	inputMatrix, inputDataRows := parseInput(inputData)
 	result := 0
 
 	starPoints := map[string]StarNumbers{}
