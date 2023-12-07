@@ -122,6 +122,7 @@ func Part2(inputData []byte) int {
 	result := 0
 	for len(cards) > 0 {
 		result++
+		//queue
 		currCard, cards = cards[0], cards[1:]
 
 		for i := currCard.Index; i < currCard.Index+currCard.Matches; i++ {
