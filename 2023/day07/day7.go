@@ -305,6 +305,6 @@ func main() {
 		return
 	}
 
-	//fmt.Println(Part1(inputData))
+	fmt.Println(Part1(inputData))
 	fmt.Println(Part2(inputData))
 }
