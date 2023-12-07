@@ -48,16 +48,32 @@ function findValue($start, $mapData, $level) {
         
         
         if ($parts[1] == "AND") {
-            return $v1 & $v2;
+            $valRes = $v1 & $v2;
+            if ($valRes < 0) {
+                $valRes = 65536 + $valRes;
+            }
+            return $valRes;
         }
         if ($parts[1] == "OR") {
-            return $v1 | $v2;
+            $valRes = $v1 | $v2;
+            if ($valRes < 0) {
+                $valRes = 65536 + $valRes;
+            }
+            return $valRes;
         }
         if ($parts[1] == "LSHIFT") {
-            return $v1 << $v2;
+            $valRes = $v1 << $v2;
+            if ($valRes < 0) {
+                $valRes = 65536 + $valRes;
+            }
+            return $valRes;
         }
         if ($parts[1] == "RSHIFT") {
-            return $v1 >> $v2;
+            $valRes = $v1 >> $v2;
+            if ($valRes < 0) {
+                $valRes = 65536 + $valRes;
+            }
+            return $valRes;
         }
         return $v1;
     } else if (substr_count($start, " ") == 1) {
@@ -70,7 +86,12 @@ function findValue($start, $mapData, $level) {
             }
 
             echo "#### END: " . ~$val . "\n";
-            return ~$val;
+
+            $valRes = ~$val;
+            if ($valRes < 0) {
+                $valRes = 65536 + $valRes;
+            }
+            return $valRes;
         }
         
     } else {
