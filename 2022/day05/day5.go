@@ -77,6 +77,24 @@ func Part1(inputData []byte) int {
 }
 
 func Part2(inputData []byte) int {
+
+	moves, containers := parseInput(inputData)
+	var currCrates []string
+
+	for _, move := range moves {
+		currCrates = []string{}
+		currCrates = append(currCrates, containers[move.SourceIndex-1].Crates[0:move.CountToMove]...)
+		containers[move.SourceIndex-1].Crates = containers[move.SourceIndex-1].Crates[move.CountToMove:]
+
+		containers[move.DestinationIndex-1].Crates = append(currCrates, containers[move.DestinationIndex-1].Crates...)
+	}
+
+	res := ""
+	for _, container := range containers {
+		res += container.Crates[0]
+	}
+
+	fmt.Println(res)
 	return 0
 }
 
@@ -89,6 +107,6 @@ func main() {
 		return
 	}
 
-	fmt.Println(Part1(inputData))
-	//fmt.Println(Part2(inputData))
+	//fmt.Println(Part1(inputData))
+	fmt.Println(Part2(inputData))
 }
