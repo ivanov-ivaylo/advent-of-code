@@ -320,7 +320,7 @@ func Part1(inputData []byte) int {
 	return res / 2
 }
 
-//not finished
+// not finished
 func Part2(inputData []byte) int {
 
 	maze, startX, startY := parseInput(inputData)
