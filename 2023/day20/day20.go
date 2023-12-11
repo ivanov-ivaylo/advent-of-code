@@ -16,7 +16,7 @@ func Part2(inputData []byte) int {
 func main() {
 
 	pwd, _ := os.Getwd()
-	inputData, err := os.ReadFile(pwd + "/2023/day12/input.txt")
+	inputData, err := os.ReadFile(pwd + "/2023/day20/input.txt")
 	if err != nil {
 		fmt.Println(err)
 		return
