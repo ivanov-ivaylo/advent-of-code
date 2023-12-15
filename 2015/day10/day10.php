@@ -15,19 +15,17 @@ for ($i = 0; $i < 50; $i++) {
         } else if ($numStr == $input[$s]) {
             $numCnt++;
         } else {
-            $res = $res . $numCnt . $numStr;
+            $res .= $numCnt . $numStr;
             $numStr = $input[$s];
             $numCnt = 1;
         }
     }
     if ($numCnt > 0) {
-        $res = $res . $numCnt . $numStr;
+        $res .= $numCnt . $numStr;
     }
     $input = $res;
     
     echo $i . " " . strlen($input) . "\n";
-    
-    
 }
 
 
