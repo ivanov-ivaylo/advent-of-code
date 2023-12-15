@@ -8,6 +8,7 @@ for ($i = 0; $i < 50; $i++) {
     $numStr = "";
     $res = "";
     $len = strlen($input);
+    echo $i . " " . strlen($input) . "\n";
     for ($s = 0; $s < $len; $s++) {
         if ($numStr == "") {
             $numStr = $input[$s];
@@ -25,10 +26,8 @@ for ($i = 0; $i < 50; $i++) {
     }
     $input = $res;
     
-    echo $i . " " . strlen($input) . "\n";
+    
 }
 
-
-//echo $input . "\n";
 
 echo strlen($input);
