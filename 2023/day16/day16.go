@@ -35,13 +35,11 @@ func getStrCoordinates(tile Tile) string {
 	return strconv.Itoa(tile.X) + ":" + strconv.Itoa(tile.Y)
 }
 
-func Part1(inputData []byte) int {
-
-	grid := parseInput(inputData)
+func findEnergizesTiles(grid [][]string, startDirection string, startX int, startY int) int {
 	encountered := map[string]int{}
 	visited := map[string]int{}
 
-	queue := []Tile{{Direction: "E", X: 0, Y: 0}}
+	queue := []Tile{{Direction: startDirection, X: startX, Y: startY}}
 	var currTile Tile
 	for len(queue) > 0 {
 		currTile, queue = queue[0], queue[1:]
@@ -103,8 +101,45 @@ func Part1(inputData []byte) int {
 	return len(visited)
 }
 
+func Part1(inputData []byte) int {
+
+	grid := parseInput(inputData)
+
+	return findEnergizesTiles(grid, "E", 0, 0)
+}
+
 func Part2(inputData []byte) int {
-	return 0
+
+	grid := parseInput(inputData)
+
+	res := 0
+	for i := 0; i < len(grid[0]); i++ {
+		curr := findEnergizesTiles(grid, "S", 0, i)
+		if curr > res {
+			res = curr
+		}
+	}
+	for i := 0; i < len(grid); i++ {
+		curr := findEnergizesTiles(grid, "E", i, 0)
+		if curr > res {
+			res = curr
+		}
+	}
+	for i := 0; i < len(grid[0]); i++ {
+		curr := findEnergizesTiles(grid, "N", len(grid)-1, i)
+		if curr > res {
+			res = curr
+		}
+	}
+
+	for i := 0; i < len(grid); i++ {
+		curr := findEnergizesTiles(grid, "W", i, len(grid[0]))
+		if curr > res {
+			res = curr
+		}
+	}
+
+	return res
 }
 
 func main() {
@@ -117,5 +152,5 @@ func main() {
 	}
 
 	fmt.Println(Part1(inputData))
-	//fmt.Println(Part2(inputData))
+	fmt.Println(Part2(inputData))
 }
